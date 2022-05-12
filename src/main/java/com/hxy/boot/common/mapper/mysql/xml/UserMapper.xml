@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hxy.boot.common.mapper.mysql.UserMapper">
+
+    <sql id="selectFields">
+        id, name, account, password, create_time, update_time
+    </sql>
+
+    <sql id="insertFields">
+        name, account, password, create_time
+    </sql>
+
+    <sql id="updateFields">
+        name = #{name}, password = #{password}, update_time = #{updateTime}
+    </sql>
+
+    <resultMap id="UserMap" type="com.hxy.boot.common.entity.mysql.UserEntity">
+        <!--<result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>-->
+        <!--<result column="create_date" jdbcType="DATE" property="createTime"/>
+        <result column="update_date" jdbcType="DATE" property="updateTime"/>-->
+    </resultMap>
+
+    <select id="selectByAccountAndPassword" parameterType="map" resultMap="UserMap">
+        select
+        <include refid="selectFields"/>
+        from user
+        where account = #{account} and password = #{password}
+    </select>
+
+    <select id="selectByAccount" parameterType="String" resultMap="UserMap">
+        select
+        <include refid="selectFields"/>
+        from user
+        where account = #{account}
+    </select>
+</mapper>

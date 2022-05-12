@@ -1,0 +1,48 @@
+server:
+  port: 8080
+  context-path: /
+
+spring:
+  application:
+    name: hxy_boot
+  profiles:
+    active: dev
+  devtools:
+    add-properties: true
+    # 热部署
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    mysql:
+      # 多数据源一定使用jdbc-url
+      jdbc-url: jdbc:mysql://localhost:3306/loopback2mysql
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      auto-commit: true
+      maximum-pool-size: 30
+      minimum-idle: 10
+      connection-timeout: 60000
+      idle-timeout: 60000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+    postgresql:
+      jdbc-url: jdbc:postgresql://localhost:5432/demo
+      username: root
+      password: root
+      driver-class-name: org.postgresql.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      auto-commit: true
+      maximum-pool-size: 30
+      minimum-idle: 10
+      connection-timeout: 60000
+      idle-timeout: 60000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
