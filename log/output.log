@@ -1382,13 +1382,13 @@
 09:20:46.391 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
 09:20:46.408 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
 09:20:46.408 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 255 ms
-09:20:46.440 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5eeb374c]
+09:20:46.440 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5eeb374c]
 09:20:46.441 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
 09:20:46.448 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 09:20:46.493 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5eeb374c]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5eeb374c]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
@@ -1413,7 +1413,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5eeb374c]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5eeb374c]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267)
@@ -1517,13 +1517,13 @@ Caused by: java.lang.ClassNotFoundException: com.hxy.boot.common.entity.mysql.Us
 10:00:59.769 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
 10:00:59.778 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
 10:00:59.779 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 150 ms
-10:00:59.794 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@51629f4]
+10:00:59.794 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@51629f4]
 10:00:59.795 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
 10:00:59.797 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 10:00:59.800 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@51629f4]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@51629f4]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
@@ -1548,7 +1548,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@51629f4]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@51629f4]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267)
@@ -1577,13 +1577,13 @@ Caused by: java.lang.ClassNotFoundException: com.hxy.boot.common.entity.mysql.Us
 10:11:47.160 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
 10:11:47.169 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
 10:11:47.170 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 142 ms
-10:11:47.187 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@208f1f0c]
+10:11:47.187 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@208f1f0c]
 10:11:47.187 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
 10:11:47.190 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 10:11:47.194 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@208f1f0c]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@208f1f0c]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
@@ -1608,7 +1608,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@208f1f0c]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@208f1f0c]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267)
@@ -1637,13 +1637,13 @@ Caused by: java.lang.ClassNotFoundException: com.hxy.boot.common.entity.mysql.Us
 10:16:02.426 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
 10:16:02.433 [restartedMain] INFO  o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
 10:16:02.433 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 125 ms
-10:16:02.444 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5447e5c6]
+10:16:02.444 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5447e5c6]
 10:16:02.444 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
 10:16:02.446 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 10:16:02.448 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5447e5c6]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonUserService': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5447e5c6]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
@@ -1668,7 +1668,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5447e5c6]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hxy.boot.common.service.mysql.impl.UserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5447e5c6]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267)
@@ -2129,7 +2129,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Field userMapper in com.hxy.boot.common.service.mysql.impl.UserService required a bean of type 'com.hxy.boot.common.mapper.mysql.UserMapper' that could not be found.
+Field userMapper in com.hxy.boot.common.service.mysql.impl.UserServiceImpl required a bean of type 'com.hxy.boot.common.mapper.mysql.UserMapper' that could not be found.
 
 The injection point has the following annotations:
 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
@@ -4198,7 +4198,7 @@ Consider defining a bean of type 'com.hxy.boot.common.mapper.mysql.UserMapper' i
 16:09:36.475 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
 16:09:36.481 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
 16:09:36.481 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 795 ms
-16:09:36.497 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.hxy.boot.common.service.mysql.impl.UserService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+16:09:36.497 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.hxy.boot.common.service.mysql.impl.UserServiceImpl' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 16:09:36.497 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
 16:09:36.500 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
@@ -4211,7 +4211,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Field userService in com.hxy.boot.springboot.service.UserService required a bean of type 'com.hxy.boot.common.service.mysql.impl.UserService' that could not be found.
+Field userService in com.hxy.boot.springboot.service.UserService required a bean of type 'com.hxy.boot.common.service.mysql.impl.UserServiceImpl' that could not be found.
 
 The injection point has the following annotations:
 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
@@ -4219,7 +4219,7 @@ The injection point has the following annotations:
 
 Action:
 
-Consider defining a bean of type 'com.hxy.boot.common.service.mysql.impl.UserService' in your configuration.
+Consider defining a bean of type 'com.hxy.boot.common.service.mysql.impl.UserServiceImpl' in your configuration.
 
 16:09:38.052 [restartedMain] INFO  com.hxy.boot.MainApplication - Starting MainApplication using Java 11.0.12 on pc-wh2110069 with PID 5320 (C:\Users\WH2110069\Desktop\springboot\target\classes started by wh2110069 in C:\Users\WH2110069\Desktop\springboot)
 16:09:38.052 [restartedMain] INFO  com.hxy.boot.MainApplication - The following 1 profile is active: "dev"
@@ -4429,3 +4429,78 @@ Consider defining a bean of type 'com.hxy.boot.common.service.mysql.impl.UserSer
 16:14:41.088 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 16:14:41.090 [restartedMain] INFO  com.hxy.boot.MainApplication - Started MainApplication in 0.675 seconds (JVM running for 3631.401)
 16:14:41.090 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+16:57:56.760 [restartedMain] INFO  com.hxy.boot.MainApplication - Starting MainApplication using Java 11.0.12 on pc-wh2110069 with PID 16976 (C:\Users\WH2110069\Desktop\springboot\target\classes started by wh2110069 in C:\Users\WH2110069\Desktop\springboot)
+16:57:56.763 [restartedMain] INFO  com.hxy.boot.MainApplication - The following 1 profile is active: "dev"
+16:57:56.787 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.1.Final
+16:57:56.827 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+16:57:56.827 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+16:58:04.455 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - Cannot use both: sqlSessionTemplate and sqlSessionFactory together. sqlSessionFactory is ignored.
+16:58:04.458 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hxy.boot.*.mapper.postgresql]' package. Please check your configuration.
+16:58:05.182 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+16:58:05.209 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+16:58:05.209 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+16:58:05.209 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
+16:58:05.291 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+16:58:05.292 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 8453 ms
+16:58:05.699 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+16:58:06.090 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+16:58:06.099 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+16:58:06.120 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+16:58:06.129 [restartedMain] INFO  com.hxy.boot.MainApplication - Started MainApplication in 9.959 seconds (JVM running for 11.553)
+16:58:32.404 [restartedMain] INFO  com.hxy.boot.MainApplication - Starting MainApplication using Java 11.0.12 on pc-wh2110069 with PID 16976 (C:\Users\WH2110069\Desktop\springboot\target\classes started by wh2110069 in C:\Users\WH2110069\Desktop\springboot)
+16:58:32.404 [restartedMain] INFO  com.hxy.boot.MainApplication - The following 1 profile is active: "dev"
+16:58:32.556 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - Cannot use both: sqlSessionTemplate and sqlSessionFactory together. sqlSessionFactory is ignored.
+16:58:32.559 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hxy.boot.*.mapper.postgresql]' package. Please check your configuration.
+16:58:32.601 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+16:58:32.602 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+16:58:32.602 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+16:58:32.602 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
+16:58:32.614 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+16:58:32.614 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 208 ms
+16:58:32.696 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+16:58:32.781 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+16:58:32.784 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+16:58:32.787 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+16:58:32.790 [restartedMain] INFO  com.hxy.boot.MainApplication - Started MainApplication in 0.414 seconds (JVM running for 38.214)
+16:58:32.792 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+16:58:36.282 [restartedMain] INFO  com.hxy.boot.MainApplication - Starting MainApplication using Java 11.0.12 on pc-wh2110069 with PID 16976 (C:\Users\WH2110069\Desktop\springboot\target\classes started by wh2110069 in C:\Users\WH2110069\Desktop\springboot)
+16:58:36.282 [restartedMain] INFO  com.hxy.boot.MainApplication - The following 1 profile is active: "dev"
+16:58:36.409 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - Cannot use both: sqlSessionTemplate and sqlSessionFactory together. sqlSessionFactory is ignored.
+16:58:36.411 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hxy.boot.*.mapper.postgresql]' package. Please check your configuration.
+16:58:36.449 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+16:58:36.450 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+16:58:36.450 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+16:58:36.450 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
+16:58:36.462 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+16:58:36.462 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 177 ms
+16:58:36.548 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+16:58:36.630 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+16:58:36.633 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+16:58:36.635 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+16:58:36.637 [restartedMain] INFO  com.hxy.boot.MainApplication - Started MainApplication in 0.378 seconds (JVM running for 42.061)
+16:58:36.638 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+16:58:38.181 [restartedMain] INFO  com.hxy.boot.MainApplication - Starting MainApplication using Java 11.0.12 on pc-wh2110069 with PID 16976 (C:\Users\WH2110069\Desktop\springboot\target\classes started by wh2110069 in C:\Users\WH2110069\Desktop\springboot)
+16:58:38.181 [restartedMain] INFO  com.hxy.boot.MainApplication - The following 1 profile is active: "dev"
+16:58:38.299 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - Cannot use both: sqlSessionTemplate and sqlSessionFactory together. sqlSessionFactory is ignored.
+16:58:38.300 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hxy.boot.*.mapper.postgresql]' package. Please check your configuration.
+16:58:38.333 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+16:58:38.334 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+16:58:38.334 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+16:58:38.334 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.62]
+16:58:38.343 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+16:58:38.343 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 160 ms
+16:58:38.397 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+16:58:38.450 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+16:58:38.452 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+16:58:38.454 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+16:58:38.456 [restartedMain] INFO  com.hxy.boot.MainApplication - Started MainApplication in 0.297 seconds (JVM running for 43.88)
+16:58:38.456 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+16:58:54.470 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+16:58:54.470 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+16:58:54.471 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+16:58:54.657 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:58:55.051 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:59:03.450 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.Exception: hxy already exists!]
+16:59:11.983 [http-nio-8080-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.Exception: userId is null, user is not exists!]
+16:59:21.682 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+16:59:21.719 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

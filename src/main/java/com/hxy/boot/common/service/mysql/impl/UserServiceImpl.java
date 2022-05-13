@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Service("commonUserService")
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
 
     @Autowired
     private UserMapper userMapper;
@@ -22,8 +22,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserEntity selectByAccountAndPassword(LoginParamVo param) {
-        return userMapper.selectByAccountAndPassword(param);
+    public UserEntity selectByAccountAndPassword(LoginParamVo param) throws Exception {
+        UserEntity user = userMapper.selectByAccountAndPassword(param);
+        if (user == null) {
+            throw new Exception("login failed!");
+        }
+        return user;
     }
 
     @Override
@@ -44,13 +48,26 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void insert(UserEntity user) {
+    public void insert(UserEntity user) throws Exception {
+        String account = user.getAccount();
+        Long id = this.existByAccount(account);
+        if (id != null) {
+            StringBuilder messsage = new StringBuilder(account);
+            messsage.append(" already exists!");
+            throw new Exception(messsage.toString());
+        }
         user.setCreateTime(new Timestamp(new Date().getTime()));
         userMapper.insert(user);
     }
 
     @Override
-    public void updateById(UserEntity user) {
+    public void updateById(UserEntity user) throws Exception {
+        Long id = this.existById(user.getId());
+        if (id == null) {
+            StringBuilder messsage = new StringBuilder("userId is ");
+            messsage.append(id).append(", user is not exists!");
+            throw new Exception(messsage.toString());
+        }
         user.setUpdateTime(new Timestamp(new Date().getTime()));
         userMapper.updateById(user);
     }

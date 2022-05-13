@@ -58,11 +58,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-        public ApiResponseVo<UserEntity> login(@RequestBody @Validated LoginParamVo loginParam) throws Exception {
+    public ApiResponseVo<UserEntity> login(@RequestBody @Validated LoginParamVo loginParam) throws Exception {
         // 获取json 这里password传入Integer类型 会自动转换为String类型
-        ApiResponseVo<UserEntity> apiResponseVo = new ApiResponseVo<>(userService.login(loginParam));
-        return apiResponseVo;
+        return new ApiResponseVo<>(userService.login(loginParam));
     }
+
     @PostMapping("/addUser")
     public ApiResponseVo<Null> addUser(@RequestBody @Validated(UserEntity.AddUser.class) UserEntity userEntity) throws Exception {
         // 获取json 这里password传入Integer类型 会自动转换为String类型
@@ -70,6 +70,7 @@ public class UserController {
         userService.addUser(userEntity);
         return apiResponseVo;
     }
+
     @PostMapping("/updateUser")
     public ApiResponseVo<Null> updateUser(@RequestBody @Validated(UserEntity.UpdateUser.class) UserEntity userEntity) throws Exception {
         // 获取json 这里password传入Integer类型 会自动转换为String类型
