@@ -3,6 +3,7 @@ package com.hxy.boot.common.service.mysql.impl;
 import com.hxy.boot.common.entity.mysql.UserEntity;
 import com.hxy.boot.common.mapper.mysql.UserMapper;
 import com.hxy.boot.common.service.mysql.IUserService;
+import com.hxy.boot.common.vo.BusinessExceptionVo;
 import com.hxy.boot.common.vo.user.LoginParamVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Service("commonUserService")
+@Service()
 public class UserServiceImpl implements IUserService {
 
     @Autowired
@@ -22,10 +23,10 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserEntity selectByAccountAndPassword(LoginParamVo param) throws Exception {
+    public UserEntity selectByAccountAndPassword(LoginParamVo param) {
         UserEntity user = userMapper.selectByAccountAndPassword(param);
         if (user == null) {
-            throw new Exception("login failed!");
+            throw new BusinessExceptionVo("账号或密码不正确!");
         }
         return user;
     }
@@ -38,7 +39,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Long existByAccount(String account) {
         UserEntity user = userMapper.selectByAccount(account);
-        return user.getId();
+        return user == null ? null : user.getId();
     }
 
     @Override
@@ -48,32 +49,32 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void insert(UserEntity user) throws Exception {
-        String account = user.getAccount();
+    public void insert(UserEntity userEntity) {
+        String account = userEntity.getAccount();
         Long id = this.existByAccount(account);
         if (id != null) {
-            StringBuilder messsage = new StringBuilder(account);
-            messsage.append(" already exists!");
-            throw new Exception(messsage.toString());
+            throw new BusinessExceptionVo("account: " + account + " 已存在!");
         }
-        user.setCreateTime(new Timestamp(new Date().getTime()));
-        userMapper.insert(user);
+        userEntity.setCreateTime(new Timestamp(new Date().getTime()));
+        userMapper.insert(userEntity);
     }
 
     @Override
-    public void updateById(UserEntity user) throws Exception {
-        Long id = this.existById(user.getId());
+    public void updateById(UserEntity userEntity) {
+        Long id = this.existById(userEntity.getId());
         if (id == null) {
-            StringBuilder messsage = new StringBuilder("userId is ");
-            messsage.append(id).append(", user is not exists!");
-            throw new Exception(messsage.toString());
+            throw new BusinessExceptionVo("id: " + userEntity.getId() + " 用户不存在!");
         }
-        user.setUpdateTime(new Timestamp(new Date().getTime()));
-        userMapper.updateById(user);
+        userEntity.setUpdateTime(new Timestamp(new Date().getTime()));
+        userMapper.updateById(userEntity);
     }
 
     @Override
     public void deleteById(long id) {
+        Long userid = this.existById(id);
+        if (userid == null) {
+            throw new BusinessExceptionVo("id: " + id + " 用户已经删除!");
+        }
         userMapper.deleteById(id);
     }
 

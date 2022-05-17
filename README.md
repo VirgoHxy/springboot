@@ -1,4 +1,5 @@
 # 项目的基本目录结构
+
 - .idea/ -- 项目配置,包括历史记录,版本控制信息
 - .mvn/ -- 为项目指定某个特定 Maven 版本
 - src/ -- 主目录
@@ -12,17 +13,17 @@
 				- controller/ -- 控制器目录
 					- ExceptionController.java -- 错误统一处理控制器
 				- entity/ -- 数据库模型目录
-					- mysql/ -- mysql 的表模型目录
-					- postgresql/ -- postgresql 的表模型目录
+					- mysql/ -- mysql 的 loopback2mysql 的表模型目录
+					- mysql4test/ -- mysql 的 test 的表模型目录
 				- mapper/ -- 操作数据库的 mapper 的存放目录
 					- mysql/ -- mysql 数据库操作的 mapperInterface 目录
 						- xml/ -- mapper.xml 文件存放目录
-					- postgresql/ -- postgresql 数据库操作的 mapperInterface 目录
+					- mysql4test/ -- mysql4test 数据库操作的 mapperInterface 目录
 						- xml/ -- mapper.xml 文件存放目录
 				- service/ -- 服务目录,调用 mapper 增删改查或者是公共操作
 					- mysql/ -- mysql 操作的 interface 目录
 						- impl/ -- interface 的实现目录
-					- postgresql/ -- postgresql 操作的 interface 目录
+					- mysql4test/ -- mysql4test 操作的 interface 目录
 						- impl/ -- interface 的实现目录
 				- vo/ -- 常量/枚举/配置类的存放目录
 					- 数据表名/ -- 对应表接口参数为复杂对象的类存放目录
@@ -177,7 +178,7 @@ public class NeedNewDemo {
 			- Mybatis-Plus: mybatis-plus-boot-starter
 			- druid 连接池: druid-spring-boot-starter
 		- 数据校验: hibernate-validator
-		- 日志: logstash-logback-encoder
+		- 日志: logback + slf4j
 		- 处理 json: fastjson
 - 如何初始化项目,初始化项目的基本流程
 	- 使用 spring boot 创建模板项目
@@ -203,18 +204,15 @@ public class NeedNewDemo {
 - 数据库字段和项目字段不一致,如何使用 baseMapper 方法
 	- 定义 Entity 的@TableField 注解
 	- postgresql 字段区分大小写问题,mybatis 自动将大写字段转为小写,导致使用 basemapper 方法报错,需要在设计表字段时就要规定好为小写或者是下划线连接
+- 多数据源事务,多种 service 的处理融在一起怎么处理事务 -- jta,这里采用atomikos包,启动多数据源事务
 
 # question list
 
-- 多数据源事务,多种 service 的处理融在一起怎么处理事务
-
 # to-do list
 
-- 项目整理和优化
-	- sonarlint 很多警告
-	- 日志加入
-	- 包别名
-	- 复用注解,自定义注解
-	- 单元测试
-	- 自动创建 service 和 mapper
-	- entity级联校验以及关系注解
+- 项目整理和优化 
+  - 包别名
+  - 复用注解,自定义注解
+  - 单元测试
+  - 自动创建 service 和 mapper
+  - entity级联校验以及关系注解

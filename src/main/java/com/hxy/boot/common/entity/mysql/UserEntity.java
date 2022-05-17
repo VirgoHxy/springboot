@@ -19,7 +19,7 @@ import java.sql.Timestamp;
 @TableName(value = "`user`", schema = "loopback2mysql")
 public class UserEntity {
     @TableId(value = "id", type = IdType.AUTO)
-    @NotNull(message = "id不能为空", groups = UpdateUser.class)
+    @NotNull(message = "id不能为空", groups = {UpdateUser.class, RemoveUser.class})
     private Long id;
 
     @NotBlank(message = "name不能为空", groups = AddUser.class)
@@ -46,4 +46,5 @@ public class UserEntity {
 
     public interface AddUser extends Default {}
     public interface UpdateUser extends Default {}
+    public interface RemoveUser extends Default {}
 }
