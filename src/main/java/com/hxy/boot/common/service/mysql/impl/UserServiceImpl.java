@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Service()
+@Service
 public class UserServiceImpl implements IUserService {
 
     @Autowired
@@ -63,7 +63,7 @@ public class UserServiceImpl implements IUserService {
     public void updateById(UserEntity userEntity) {
         Long id = this.existById(userEntity.getId());
         if (id == null) {
-            throw new BusinessExceptionVo("id: " + userEntity.getId() + " 用户不存在!");
+            throw new BusinessExceptionVo("用户不存在!");
         }
         userEntity.setUpdateTime(new Timestamp(new Date().getTime()));
         userMapper.updateById(userEntity);
@@ -73,7 +73,7 @@ public class UserServiceImpl implements IUserService {
     public void deleteById(long id) {
         Long userid = this.existById(id);
         if (userid == null) {
-            throw new BusinessExceptionVo("id: " + id + " 用户已经删除!");
+            throw new BusinessExceptionVo("用户已删除!");
         }
         userMapper.deleteById(id);
     }

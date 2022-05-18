@@ -14,7 +14,7 @@
         name = #{name}, password = #{password}, update_time = #{updateTime}
     </sql>
 
-    <resultMap id="UserMap" type="com.hxy.boot.common.entity.mysql.UserEntity">
+    <resultMap id="UserMap" type="UserEntity">
         <!--<result column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="account" jdbcType="VARCHAR" property="account"/>

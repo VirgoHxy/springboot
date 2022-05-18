@@ -5,10 +5,10 @@ server:
 spring:
   application:
     name: hxy_boot
-  jackson:
-    default-property-inclusion: NON_EMPTY
   profiles:
     active: dev
+  jackson:
+    default-property-inclusion: NON_EMPTY
   devtools:
     add-properties: true
     # 热部署
@@ -23,7 +23,7 @@ logging:
   level:
     com:
       hxy:
-        boot: INFO
+        boot: info
 ---
 spring:
   config:

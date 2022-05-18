@@ -1,6 +1,7 @@
 package com.hxy.boot.common.config;
 
 import com.atomikos.jdbc.AtomikosDataSourceBean;
+import com.baomidou.mybatisplus.autoconfigure.SpringBootVFS;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import lombok.Data;
 import org.apache.ibatis.logging.stdout.StdOutImpl;
@@ -8,7 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,6 @@ public class JTAMysql4testConfig {
     private String username;
     private String password;
 
-    @Qualifier("mysql4test")
     @Bean(name = "mysql4test")
     public DataSource mysql4testDataSource() {
         // 不采用多数据事务
@@ -52,6 +51,10 @@ public class JTAMysql4testConfig {
     public SqlSessionFactory mysql4testSqlSessionFactory() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(mysql4testDataSource());
+        // 添加别名包路径 在yml/properties设置不能生效
+        factoryBean.setTypeAliasesPackage("com.hxy.boot.common.entity.mysql4test");
+        // 添加设置匹配路径规则
+        factoryBean.setVfs(SpringBootVFS.class);
         // 配置
         MybatisConfiguration configuration = new MybatisConfiguration();
         // 下划线转驼峰
@@ -63,7 +66,7 @@ public class JTAMysql4testConfig {
         // 设定配置
         factoryBean.setConfiguration(configuration);
         // 配置mapper路径
-        factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:**/mapper/mysql4test/*/*.xml"));
+        factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:**/mapper/mysql4test/*/*.xml"));
         return factoryBean.getObject();
     }
 

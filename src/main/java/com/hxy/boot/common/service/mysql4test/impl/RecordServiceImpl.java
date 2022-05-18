@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Service()
+@Service
 public class RecordServiceImpl implements IRecordService {
 
     @Autowired

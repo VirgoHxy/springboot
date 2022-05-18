@@ -6,9 +6,12 @@ import com.hxy.boot.common.vo.BusinessExceptionVo;
 import com.hxy.boot.common.vo.ExceptionEnumVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.binding.BindingException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingRequestHeaderException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -43,10 +46,31 @@ public class CommonController {
         BindingResult result = ex.getBindingResult();
         final List<FieldError> fieldErrors = result.getFieldErrors();
         StringBuilder sb = new StringBuilder();
-        for (FieldError error : fieldErrors) {
-            sb.append(error.getDefaultMessage()).append("\n");
+        for (int i = 0; i < fieldErrors.size(); i++) {
+            sb.append(fieldErrors.get(i).getDefaultMessage());
+            if (i != fieldErrors.size() - 1) {
+                sb.append(",");
+            } else {
+                sb.append(";");
+            }
         }
         return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), sb.toString());
+    }
+
+    /**
+     * 实体对象前加@RequestParam 参数缺失
+     */
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ApiResponseVo<Object> exceptionHandler(MissingServletRequestParameterException ex) {
+        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    }
+
+    /**
+     * 实体对象前加@RequestHeader 请求头缺失
+     */
+    @ExceptionHandler(MissingRequestHeaderException.class)
+    public ApiResponseVo<Object> exceptionHandler(MissingRequestHeaderException ex) {
+        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
@@ -55,6 +79,14 @@ public class CommonController {
     @ExceptionHandler(ConstraintViolationException.class)
     public ApiResponseVo<Object> exceptionHandler(ConstraintViolationException ex) {
         return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    }
+
+    /**
+     * 数据格式异常,例如: json无法序列化
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ApiResponseVo<Object> exceptionHandler(HttpMessageNotReadableException ex) {
+        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getCause().getMessage());
     }
 
     /**

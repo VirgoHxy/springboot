@@ -18,11 +18,18 @@
             <!-- 如果没有命中就使用这条规则 -->
             <onMismatch>ACCEPT</onMismatch>
         </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <!-- 如果命中就禁止这条日志 -->
+            <onMatch>DENY</onMatch>
+            <!-- 如果没有命中就使用这条规则 -->
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
         <file>
-            ${logging.path}/info.log
+            ${logging.path}/hxy-boot/${logging.level}.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${logging.path}/%d{yyyy-MM-dd}/info.log</FileNamePattern>
+            <FileNamePattern>${logging.path}/hxy-boot/%d{yyyy-MM-dd}/${logging.level}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -37,10 +44,10 @@
             <level>error</level>
         </filter>
         <file>
-            ${logging.path}/error.log
+            ${logging.path}/hxy-boot/error.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${logging.path}/%d{yyyy-MM-dd}/error.log</FileNamePattern>
+            <FileNamePattern>${logging.path}/hxy-boot/%d{yyyy-MM-dd}/error.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

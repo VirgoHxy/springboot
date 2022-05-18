@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 public enum ExceptionEnumVo implements IBaseExceptionVo {
 
-    // 数据操作错误定义
+    // 返回错误定义
     SUCCESS("2000", "成功!"),
     BUSINESS_ERROR("2008", "业务错误!"),
     BODY_NOT_MATCH("4000","请求的数据或格式不符合!"),

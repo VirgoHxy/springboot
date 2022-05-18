@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
@@ -19,13 +20,15 @@ public class TestController {
 
     @GetMapping("/demo")
     public String demo(
-            @RequestParam(name = "param1", defaultValue = "1") Integer param1,
-            @RequestParam(name = "param2") @Max(value = 12) Integer param2
+            @RequestParam(name = "param1", defaultValue = "2") Integer param1,
+            @RequestParam(name = "param2") @Max(value = 12) Integer param2,
+            @RequestHeader("authorization") @NotBlank(message = "header.authorization 不能为空!") String token
     ) {
         // @RequestParam可以读取get中的params,post中的form-data
         // 没传param2则会报错 required默认为true
         // @Max为constraints的验证注解 不能大于12
         // 传了param1: p1 + p2;没有传param1: 1 + p2
+        log.info(token);
         return String.valueOf(param1 + param2);
     }
 
