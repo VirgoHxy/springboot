@@ -27,7 +27,7 @@ public class CommonController {
      */
     @ExceptionHandler(BindingException.class)
     public ApiResponseVo<Object> exceptionHandler(BindingException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getCause().getMessage());
+        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
@@ -35,7 +35,7 @@ public class CommonController {
      */
     @ExceptionHandler(ValidationException.class)
     public ApiResponseVo<Object> exceptionHandler(ValidationException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getCause().getMessage());
+        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
@@ -47,7 +47,9 @@ public class CommonController {
         final List<FieldError> fieldErrors = result.getFieldErrors();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < fieldErrors.size(); i++) {
-            sb.append(fieldErrors.get(i).getDefaultMessage());
+            FieldError fe = fieldErrors.get(i);
+            sb.append(fe.getField());
+            sb.append(fe.getDefaultMessage());
             if (i != fieldErrors.size() - 1) {
                 sb.append(",");
             } else {
@@ -86,7 +88,7 @@ public class CommonController {
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ApiResponseVo<Object> exceptionHandler(HttpMessageNotReadableException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getCause().getMessage());
+        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**

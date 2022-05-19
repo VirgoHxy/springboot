@@ -21,6 +21,6 @@ public class RecordEntity {
     private String content;
 
     @TableField("cr_time")
-    @Null(message = "createTime不能存在")
+    @Null
     private Timestamp createTime;
 }

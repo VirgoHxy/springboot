@@ -3,6 +3,7 @@ package com.hxy.boot.common.entity.mysql;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.hxy.boot.common.vo.RegexpVo;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -18,33 +19,40 @@ import java.sql.Timestamp;
 @Setter
 @TableName(value = "`user`", schema = "loopback2mysql")
 public class UserEntity {
+
     @TableId(value = "id", type = IdType.AUTO)
-    @NotNull(message = "id不能为空", groups = {UpdateUser.class, RemoveUser.class})
+    @NotNull(groups = {UpdateUser.class, RemoveUser.class})
     private Long id;
 
-    @NotBlank(message = "name不能为空", groups = AddUser.class)
-    @Length(max = 6, message = "name不能超过6个字符")
+    @NotBlank(groups = AddUser.class)
+    @Length(max = 6)
+    @Pattern(regexp = RegexpVo.CAN_NOT_ILLEGAL_CHAR_REGEXP, message = RegexpVo.CAN_NOT_ILLEGAL_CHAR_MESSAGE)
     private String name;
 
-    @NotBlank(message = "account不能为空", groups = AddUser.class)
-    @Null(message = "account不能更新", groups = UpdateUser.class)
-    @Length(max = 10, message = "account不能超过10个字符")
-    @Pattern(regexp = "^[A-Za-z\\d]+$", message = "account仅包含字母和数字")
+    @NotBlank(groups = AddUser.class)
+    @Null(groups = UpdateUser.class)
+    @Length(max = 10)
+    @Pattern(regexp = RegexpVo.ONLY_NUMBER_LETTER_REGEXP, message = RegexpVo.ONLY_NUMBER_LETTER_MESSAGE)
     private String account;
 
-    @NotBlank(message = "password不能为空", groups = AddUser.class)
-    @Null(message = "password不能更新", groups = UpdateUser.class)
-    @Length(max = 20, message = "password不能超过20个字符")
-    @Pattern(regexp = "^[A-Za-z\\d]+$", message = "password仅包含字母和数字")
+    @NotBlank(groups = AddUser.class)
+    @Null(groups = UpdateUser.class)
+    @Length(max = 20)
+    @Pattern(regexp = RegexpVo.ONLY_NUMBER_LETTER_REGEXP, message = RegexpVo.ONLY_NUMBER_LETTER_MESSAGE)
     private String password;
 
-    @Null(message = "createTime不能存在")
+    @Null()
     private Timestamp createTime;
 
-    @Null(message = "updateTime不能存在")
+    @Null()
     private Timestamp updateTime;
 
-    public interface AddUser extends Default {}
-    public interface UpdateUser extends Default {}
-    public interface RemoveUser extends Default {}
+    public interface AddUser extends Default {
+    }
+
+    public interface UpdateUser extends Default {
+    }
+
+    public interface RemoveUser extends Default {
+    }
 }

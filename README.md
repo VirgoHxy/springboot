@@ -267,7 +267,6 @@ public class NeedNewDemo {
 
 - 项目整理和优化
   - 复用注解,自定义注解
-  - 错误信息统一,可以运用自定义注解?
   - 自动创建 service 和 mapper
   - entity级联校验以及关系注解
   - 单元测试
