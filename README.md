@@ -32,7 +32,8 @@
 					- BusinessExceptionVo.java -- 自定义业务异常类
 					- ExceptionEnumVo.java -- 异常枚举
 					- IBaseExceptionVo.java -- 异常实现接口
-					- ProfileActiveVo.java -- profiles 的类
+					- ProfileActiveVo.java -- profiles 的active
+					- RegexpVo.java -- 常量正则类
 			- 你的项目名称/ -- 具体业务目录
 				- controller/ -- 接口目录
 				- service/ -- 具体业务目录
