@@ -1,12 +1,12 @@
 package com.hxy.boot.common.service.mysql;
 
 import com.hxy.boot.common.entity.mysql.UserEntity;
-import com.hxy.boot.common.vo.user.LoginParamVo;
+import com.hxy.boot.common.vo.user.LoginParamVO;
 
 public interface IUserService {
     UserEntity selectById(long id);
 
-    UserEntity selectByAccountAndPassword(LoginParamVo param);
+    UserEntity selectByAccountAndPassword(LoginParamVO param);
 
     UserEntity selectByAccount(String account);
 

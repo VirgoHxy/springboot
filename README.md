@@ -261,13 +261,15 @@ public class NeedNewDemo {
 	- 定义 Entity 的@TableField 注解
 	- postgresql 字段区分大小写问题,mybatis 自动将大写字段转为小写,导致使用 basemapper 方法报错,需要在设计表字段时就要规定好为小写或者是下划线连接
 - 多种数据源操作的处理融合在一起怎么处理事务 -- jta,这里采用atomikos包,启动多数据源事务
-
+- 复合注解,自定义注解
 # question list
 
 # to-do list
 
 - 项目整理和优化
-  - 复用注解,自定义注解
+  - 请求头token统一校验, 请求拦截器
+  - 注释优化
   - 自动创建 service 和 mapper
   - entity级联校验以及关系注解
+  - 整合elasticsearch
   - 单元测试

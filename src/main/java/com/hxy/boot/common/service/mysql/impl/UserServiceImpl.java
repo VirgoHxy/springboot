@@ -3,8 +3,8 @@ package com.hxy.boot.common.service.mysql.impl;
 import com.hxy.boot.common.entity.mysql.UserEntity;
 import com.hxy.boot.common.mapper.mysql.UserMapper;
 import com.hxy.boot.common.service.mysql.IUserService;
-import com.hxy.boot.common.vo.BusinessExceptionVo;
-import com.hxy.boot.common.vo.user.LoginParamVo;
+import com.hxy.boot.common.utils.exception.BusinessException;
+import com.hxy.boot.common.vo.user.LoginParamVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +23,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserEntity selectByAccountAndPassword(LoginParamVo param) {
+    public UserEntity selectByAccountAndPassword(LoginParamVO param) {
+        Long id = this.existByAccount(param.getAccount());
+        if (id == null) {
+            throw new BusinessException("账号不存在!");
+        }
         UserEntity user = userMapper.selectByAccountAndPassword(param);
         if (user == null) {
-            throw new BusinessExceptionVo("账号或密码不正确!");
+            throw new BusinessException("账号或密码不正确!");
         }
         return user;
     }
@@ -53,7 +57,7 @@ public class UserServiceImpl implements IUserService {
         String account = userEntity.getAccount();
         Long id = this.existByAccount(account);
         if (id != null) {
-            throw new BusinessExceptionVo("account: " + account + " 已存在!");
+            throw new BusinessException("account: " + account + " 已存在!");
         }
         userEntity.setCreateTime(new Timestamp(new Date().getTime()));
         userMapper.insert(userEntity);
@@ -63,7 +67,7 @@ public class UserServiceImpl implements IUserService {
     public void updateById(UserEntity userEntity) {
         Long id = this.existById(userEntity.getId());
         if (id == null) {
-            throw new BusinessExceptionVo("用户不存在!");
+            throw new BusinessException("用户不存在!");
         }
         userEntity.setUpdateTime(new Timestamp(new Date().getTime()));
         userMapper.updateById(userEntity);
@@ -73,7 +77,7 @@ public class UserServiceImpl implements IUserService {
     public void deleteById(long id) {
         Long userid = this.existById(id);
         if (userid == null) {
-            throw new BusinessExceptionVo("用户已删除!");
+            throw new BusinessException("用户已删除!");
         }
         userMapper.deleteById(id);
     }

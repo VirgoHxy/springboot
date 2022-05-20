@@ -3,7 +3,7 @@ package com.hxy.boot.common.entity.mysql;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.hxy.boot.common.vo.RegexpVo;
+import com.hxy.boot.common.vo.RegexpVO;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -26,19 +26,19 @@ public class UserEntity {
 
     @NotBlank(groups = AddUser.class)
     @Length(max = 6)
-    @Pattern(regexp = RegexpVo.CAN_NOT_ILLEGAL_CHAR_REGEXP, message = RegexpVo.CAN_NOT_ILLEGAL_CHAR_MESSAGE)
+    @Pattern(regexp = RegexpVO.CAN_NOT_ILLEGAL_CHAR_REGEXP, message = RegexpVO.CAN_NOT_ILLEGAL_CHAR_MESSAGE)
     private String name;
 
     @NotBlank(groups = AddUser.class)
     @Null(groups = UpdateUser.class)
     @Length(max = 10)
-    @Pattern(regexp = RegexpVo.ONLY_NUMBER_LETTER_REGEXP, message = RegexpVo.ONLY_NUMBER_LETTER_MESSAGE)
+    @Pattern(regexp = RegexpVO.ONLY_NUMBER_LETTER_REGEXP, message = RegexpVO.ONLY_NUMBER_LETTER_MESSAGE)
     private String account;
 
     @NotBlank(groups = AddUser.class)
     @Null(groups = UpdateUser.class)
     @Length(max = 20)
-    @Pattern(regexp = RegexpVo.ONLY_NUMBER_LETTER_REGEXP, message = RegexpVo.ONLY_NUMBER_LETTER_MESSAGE)
+    @Pattern(regexp = RegexpVO.ONLY_NUMBER_LETTER_REGEXP, message = RegexpVO.ONLY_NUMBER_LETTER_MESSAGE)
     private String password;
 
     @Null()

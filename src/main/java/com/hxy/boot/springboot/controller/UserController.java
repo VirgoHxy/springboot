@@ -1,45 +1,48 @@
 package com.hxy.boot.springboot.controller;
 
 import com.hxy.boot.common.entity.mysql.UserEntity;
-import com.hxy.boot.common.vo.ApiResponseVo;
-import com.hxy.boot.common.vo.user.LoginParamVo;
+import com.hxy.boot.common.utils.annotation.MyRestController;
+import com.hxy.boot.common.utils.util.JWTUtil;
+import com.hxy.boot.common.vo.user.LoginParamVO;
 import com.hxy.boot.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-@RequestMapping("user")
-@RestController
-@Validated
+import java.util.HashMap;
+import java.util.Map;
+
+@MyRestController(path = "user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/login")
-    public ApiResponseVo<UserEntity> login(@RequestBody @Validated LoginParamVo loginParam) {
-        // 这里password传入Integer类型 会自动转换为String类型
-        return new ApiResponseVo<>(userService.login(loginParam));
+    public Map<String, Object> login(@RequestBody @Validated LoginParamVO loginParam) {
+        Map<String, Object> map = new HashMap<>();
+        UserEntity userEntity = userService.login(loginParam);
+        map.put("userInfo", userEntity);
+        map.put("token", JWTUtil.createToken(userEntity));
+        return map;
     }
 
+    // @MyTokenRequired
     @PostMapping("/add")
-    public ApiResponseVo<String> add(@RequestBody @Validated(UserEntity.AddUser.class) UserEntity userEntity) {
-        ApiResponseVo<String> apiResponseVo = new ApiResponseVo<>("");
+    public void add(@RequestBody @Validated(UserEntity.AddUser.class) UserEntity userEntity) {
         userService.add(userEntity);
-        return apiResponseVo;
     }
 
+    // @MyTokenRequired
     @PostMapping("/update")
-    public ApiResponseVo<String> update(@RequestBody @Validated(UserEntity.UpdateUser.class) UserEntity userEntity) {
-        ApiResponseVo<String> apiResponseVo = new ApiResponseVo<>("");
+    public void update(@RequestBody @Validated(UserEntity.UpdateUser.class) UserEntity userEntity) {
         userService.update(userEntity);
-        return apiResponseVo;
     }
 
+    // @MyTokenRequired
     @PostMapping("/remove")
-    public ApiResponseVo<String> remove(@RequestBody @Validated(UserEntity.RemoveUser.class) UserEntity userEntity) {
-        ApiResponseVo<String> apiResponseVo = new ApiResponseVo<>("");
+    public void remove(@RequestBody @Validated(UserEntity.RemoveUser.class) UserEntity userEntity) {
         userService.remove(userEntity);
-        return apiResponseVo;
     }
 }

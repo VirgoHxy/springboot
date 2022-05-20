@@ -4,7 +4,7 @@ import com.hxy.boot.common.entity.mysql.UserEntity;
 import com.hxy.boot.common.entity.mysql4test.RecordEntity;
 import com.hxy.boot.common.service.mysql.impl.UserServiceImpl;
 import com.hxy.boot.common.service.mysql4test.impl.RecordServiceImpl;
-import com.hxy.boot.common.vo.user.LoginParamVo;
+import com.hxy.boot.common.vo.user.LoginParamVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public class UserService {
     @Autowired
     private RecordServiceImpl recordServiceImpl;
 
-    public UserEntity login(@Validated LoginParamVo param) {
+    public UserEntity login(@Validated LoginParamVO param) {
         return userServiceImpl.selectByAccountAndPassword(param);
     }
 

@@ -95,6 +95,13 @@
             <version>2.0.1</version>
         </dependency>
 
+        <!-- jwt验证 -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.8.2</version>
+        </dependency>
+
         <!-- 导入配置文件处理器，在配置相关文件时候会有提示 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

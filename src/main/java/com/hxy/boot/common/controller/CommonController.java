@@ -1,9 +1,10 @@
 package com.hxy.boot.common.controller;
 
-import com.hxy.boot.common.util.ThrowableUtil;
-import com.hxy.boot.common.vo.ApiResponseVo;
-import com.hxy.boot.common.vo.BusinessExceptionVo;
-import com.hxy.boot.common.vo.ExceptionEnumVo;
+import com.hxy.boot.common.utils.exception.BusinessException;
+import com.hxy.boot.common.utils.exception.ExceptionEnum;
+import com.hxy.boot.common.utils.exception.JWTException;
+import com.hxy.boot.common.utils.util.ThrowableUtil;
+import com.hxy.boot.common.vo.ApiResponseVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -26,23 +27,23 @@ public class CommonController {
      * 实体对象前不加@RequestBody注解,单个对象内属性校验未通过抛出的异常类型
      */
     @ExceptionHandler(BindingException.class)
-    public ApiResponseVo<Object> exceptionHandler(BindingException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    public ApiResponseVO<Object> exceptionHandler(BindingException ex) {
+        return new ApiResponseVO<>(ExceptionEnum.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
      * 实体对象前不加@RequestBody注解,校验方法参数或方法返回值时,未校验通过时抛出的异常
      */
     @ExceptionHandler(ValidationException.class)
-    public ApiResponseVo<Object> exceptionHandler(ValidationException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    public ApiResponseVO<Object> exceptionHandler(ValidationException ex) {
+        return new ApiResponseVO<>(ExceptionEnum.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
      * 实体对象前加@RequestBody注解,抛出的异常为该类异常
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ApiResponseVo<Object> exceptionHandler(MethodArgumentNotValidException ex) {
+    public ApiResponseVO<Object> exceptionHandler(MethodArgumentNotValidException ex) {
         BindingResult result = ex.getBindingResult();
         final List<FieldError> fieldErrors = result.getFieldErrors();
         StringBuilder sb = new StringBuilder();
@@ -56,74 +57,82 @@ public class CommonController {
                 sb.append(";");
             }
         }
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), sb.toString());
+        return new ApiResponseVO<>(ExceptionEnum.BODY_NOT_MATCH.getCode(), sb.toString());
     }
 
     /**
      * 实体对象前加@RequestParam 参数缺失
      */
     @ExceptionHandler(MissingServletRequestParameterException.class)
-    public ApiResponseVo<Object> exceptionHandler(MissingServletRequestParameterException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    public ApiResponseVO<Object> exceptionHandler(MissingServletRequestParameterException ex) {
+        return new ApiResponseVO<>(ExceptionEnum.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
      * 实体对象前加@RequestHeader 请求头缺失
      */
     @ExceptionHandler(MissingRequestHeaderException.class)
-    public ApiResponseVo<Object> exceptionHandler(MissingRequestHeaderException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    public ApiResponseVO<Object> exceptionHandler(MissingRequestHeaderException ex) {
+        return new ApiResponseVO<>(ExceptionEnum.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
      * 字段校验
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    public ApiResponseVo<Object> exceptionHandler(ConstraintViolationException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    public ApiResponseVO<Object> exceptionHandler(ConstraintViolationException ex) {
+        return new ApiResponseVO<>(ExceptionEnum.BODY_NOT_MATCH.getCode(), ex.getMessage());
     }
 
     /**
      * 数据格式异常,例如: json无法序列化
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ApiResponseVo<Object> exceptionHandler(HttpMessageNotReadableException ex) {
-        return new ApiResponseVo<>(ExceptionEnumVo.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    public ApiResponseVO<Object> exceptionHandler(HttpMessageNotReadableException ex) {
+        return new ApiResponseVO<>(ExceptionEnum.BODY_NOT_MATCH.getCode(), ex.getMessage());
+    }
+
+    /**
+     * JWT异常
+     */
+    @ExceptionHandler(JWTException.class)
+    public ApiResponseVO<Object> exceptionHandler(JWTException ex) {
+        return new ApiResponseVO<>(ex);
     }
 
     /**
      * 业务异常
      */
-    @ExceptionHandler(BusinessExceptionVo.class)
-    public ApiResponseVo<Object> exceptionHandler(BusinessExceptionVo ex) {
-        return new ApiResponseVo<>(ex);
+    @ExceptionHandler(BusinessException.class)
+    public ApiResponseVO<Object> exceptionHandler(BusinessException ex) {
+        return new ApiResponseVO<>(ex);
     }
 
     /**
      * 空指针异常
      */
     @ExceptionHandler(NullPointerException.class)
-    public ApiResponseVo<Object> exceptionHandler(NullPointerException ex) {
+    public ApiResponseVO<Object> exceptionHandler(NullPointerException ex) {
         log.error("空指针异常: {}", ThrowableUtil.getStackTrace(ex));
-        return new ApiResponseVo<>(ExceptionEnumVo.NULL_ERROR);
+        return new ApiResponseVO<>(ExceptionEnum.NULL_ERROR);
     }
 
     /**
      * 数字转换异常
      */
     @ExceptionHandler(NumberFormatException.class)
-    public ApiResponseVo<Object> exceptionHandler(NumberFormatException ex) {
+    public ApiResponseVO<Object> exceptionHandler(NumberFormatException ex) {
         log.error("数字转换异常: {}", ThrowableUtil.getStackTrace(ex));
-        return new ApiResponseVo<>(ExceptionEnumVo.CAN_NOT_CONVERT);
+        return new ApiResponseVO<>(ExceptionEnum.CAN_NOT_CONVERT);
     }
 
     /**
      * 全局exception处理
      */
     @ExceptionHandler(Exception.class)
-    public ApiResponseVo<Object> exceptionHandler(Exception ex) {
+    public ApiResponseVO<Object> exceptionHandler(Exception ex) {
         log.error("未知异常: {}", ThrowableUtil.getStackTrace(ex));
-        return new ApiResponseVo<>(ExceptionEnumVo.INTERNAL_SERVER_ERROR);
+        return new ApiResponseVO<>(ExceptionEnum.INTERNAL_SERVER_ERROR);
     }
 }
 
