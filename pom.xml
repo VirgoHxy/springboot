@@ -123,6 +123,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.2</version>
                 <configuration>
                     <!-- 热更新配置 -->
                     <fork>true</fork>

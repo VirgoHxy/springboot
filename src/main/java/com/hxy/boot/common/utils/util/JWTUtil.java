@@ -59,7 +59,7 @@ public class JWTUtil {
     /**
      * 校验token并解析token
      */
-    public static Boolean verifyTokenVaild(String token) {
+    public static Boolean verifyTokenIsValid(String token) {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
             verifier.verify(token);
@@ -70,6 +70,9 @@ public class JWTUtil {
         return true;
     }
 
+    /**
+     * 获取token中的payload
+     */
     public static Object getTokenClaims(String token) {
         DecodedJWT jwt = null;
         try {

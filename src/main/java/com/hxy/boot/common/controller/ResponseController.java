@@ -38,6 +38,7 @@ public class ResponseController implements ResponseBodyAdvice<Object> {
 
     @Override
     public ApiResponseVO<Object> beforeBodyWrite(Object responseBody, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        // 使用ApiResponseVO来同意返回值
         return new ApiResponseVO<>(responseBody);
     }
 }
