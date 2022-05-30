@@ -57,7 +57,7 @@ public class UserServiceImpl implements IUserService {
         String account = userEntity.getAccount();
         Long id = this.existByAccount(account);
         if (id != null) {
-            throw new BusinessException("account: " + account + " 已存在!");
+            throw new BusinessException("账号: " + account + " 已存在!");
         }
         userEntity.setCreateTime(new Timestamp(new Date().getTime()));
         userMapper.insert(userEntity);

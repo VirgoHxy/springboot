@@ -1,12 +1,12 @@
-package com.hxy.boot.common.vo;
+package com.hxy.boot.common.utils.util;
 
 
 /**
  * 异常处理枚举类
  */
-public class RegexpVO {
+public class RegexpUtil {
 
-    private RegexpVO() {}
+    private RegexpUtil() {}
     public static final String ONLY_NUMBER_LETTER_REGEXP = "^[A-Za-z\\d]+$";
     public static final String ONLY_NUMBER_LETTER_MESSAGE = "仅能包含字母和数字";
 

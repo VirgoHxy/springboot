@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestControllerAdvice
 @Slf4j
-public class CommonController {
+public class ExceptionController {
     /**
      * 实体对象前不加@RequestBody注解,单个对象内属性校验未通过抛出的异常类型
      */

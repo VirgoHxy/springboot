@@ -23,7 +23,7 @@ public class ResponseInterceptor implements HandlerInterceptor {
             final HandlerMethod handlerMethod = (HandlerMethod) handler;
             final Class<?> klass = handlerMethod.getBeanType();
             final Method method = handlerMethod.getMethod();
-            // 在请求中设置需要进行响应包装的属性标志，在下面的ResponseBodyAdvice增强中进行处理
+            // 在请求中设置需要进行响应包装的属性标志，在ResponseBodyAdvice增强中进行处理
             if (klass.isAnnotationPresent(MyApiResponse.class)) {
                 // 在类对象上加了注解
                 request.setAttribute(ResponseController.RESPONSE_ANNOTATION, klass.getAnnotation(MyApiResponse.class));

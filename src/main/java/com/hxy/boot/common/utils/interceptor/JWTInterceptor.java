@@ -14,14 +14,16 @@ import java.lang.reflect.Method;
 
 @Component
 public class JWTInterceptor implements HandlerInterceptor {
-
+    /**
+     * 从请求头中验证token
+     */
     private void verifyToken(HttpServletRequest request) throws JWTException {
         final String authHeader = request.getHeader(JWTUtil.AUTH_HEADER_KEY);
         if (StringUtils.isBlank(authHeader)) {
             throw new JWTException();
         }
         String token = !authHeader.startsWith(JWTUtil.TOKEN_PREFIX) ? authHeader : authHeader.substring(7);
-        boolean isValid = JWTUtil.verifyTokenVaild(token);
+        boolean isValid = JWTUtil.verifyTokenIsValid(token);
         if (!isValid) {
             throw new JWTException();
         }

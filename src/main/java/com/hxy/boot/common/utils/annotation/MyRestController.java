@@ -13,8 +13,6 @@ import java.lang.annotation.*;
 @RequestMapping
 @RestController
 @Validated
-@MyApiResponse
-@MyTokenRequired
 public @interface MyRestController {
     @AliasFor("path")
     String[] value() default {};
